@@ -1,0 +1,5 @@
+{
+	"data": "[{\"name\":\"Dev\",\"id\":\"dev\",\"games\":[{\"type\":1,\"id\":\"dev\",\"name\":\"Dev Server\",\"nameShort\":\"DEV\",\"players\":-1,\"host\":\"matrix\"}, {\"type\":1,\"id\":\"ffa\",\"name\":\"FFA\",\"nameShort\":\"FFA\",\"players\":-1}, {\"type\":2,\"id\":\"ctf\",\"name\":\"CTF\",\"nameShort\":\"CTF\",\"players\":-1}]}]",
+	"country": "XX",
+	"protocol": 5
+}
