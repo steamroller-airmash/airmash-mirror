@@ -28161,7 +28161,7 @@ function() {
         {
             r = "ws://" + document.domain + ":3501"
         } else
-            r = "wss://" + game.playPath + ".airmash.steamroller.tk";
+            r = game.playUrl;
         t && n && t.close(),
         (e = new WebSocket(r)).binaryType = "arraybuffer",
         e.onopen = function() {
@@ -32659,7 +32659,7 @@ function() {
             else {
                 s[t].num++;
                 var r;
-                r = DEVELOPMENT ? "/ping" : "https://game-" + t + ".airma.sh/ping",
+                r = "/ping",
                 R(t, r, function() {
                     R(t, r)
                 })
@@ -32775,6 +32775,7 @@ function() {
                 var d = S(game.playRegion, o);
                 game.playHost = d.host,
                 game.playPath = d.id,
+                game.playUrl = d.url,
                 game.regionName = E(game.playRegion).name,
                 game.playRoom = o,
                 game.state == Network.STATE.LOGIN && Tools.wipeReel(),

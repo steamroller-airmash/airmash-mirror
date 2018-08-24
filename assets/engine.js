@@ -19730,7 +19730,7 @@ function loadGameCode() {
             }, Network.reconnect = function() {
                 UI.showMessage("alert", "", 100), Games.switchGame()
             }, Network.setup = function() {
-                (jt = (document.domain === "localhost" || document.domain === "127.0.0.1" || DEVELOPMENT ? "ws://" + document.domain + ":3501" : "wss://"+ game.playPath +".airmash.steamroller.tk")), 
+                (jt = (document.domain === "localhost" || document.domain === "127.0.0.1" || DEVELOPMENT ? "ws://" + document.domain + ":3501" : game.playUrl)), 
                     Yt && Ht && Yt.close(), 
                     (Gt = new WebSocket(jt)).binaryType = "arraybuffer", 
                     Gt.onopen = function() {
@@ -22736,7 +22736,7 @@ function loadGameCode() {
                 else {
                     Vt[wn].num++;
                     var Pn;
-                    Pn = DEVELOPMENT ? "/ping" : "https://game-" + wn + ".airma.sh/ping", xn(wn, Pn, function() {
+                    Pn ="/ping", xn(wn, Pn, function() {
                         xn(wn, Pn)
                     })
                 }
@@ -22816,6 +22816,7 @@ function loadGameCode() {
                     var On = hn(game.playRegion, An);
                     game.playHost = On.host, 
                         game.playPath = On.id, 
+                        game.playUrl = On.url,
                         game.regionName = cn(game.playRegion).name, 
                         game.playRoom = An,
                         game.state == Network.STATE.LOGIN && Tools.wipeReel(), 
