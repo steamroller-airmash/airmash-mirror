@@ -32340,7 +32340,7 @@ function() {
         Tools.removeSetting("session"),
         Tools.removeSetting("name"),
         Tools.removeSetting("flag"),
-        window.location = "/"
+        window.location = "/stock.html"
     }
     ;
     var w = function(e, t) {
@@ -32364,7 +32364,7 @@ function() {
                         }, function(e) {
                             UI.showMessage("alert", '<span class="mainerror">Protocol update<br>Your client is being updated to the new version</span>', 3e4),
                             setTimeout(function() {
-                                window.location = "/?" + Tools.randomID(10) + "#reload"
+                                window.location = "/stock.html?" + Tools.randomID(10) + "#reload"
                             }, 5e3)
                         });
                     Tools.ajaxPost("/clienterror", {
@@ -32423,7 +32423,7 @@ function() {
     }
       , I = function() {
         var e = window.location.hash;
-        if (history.replaceState(null, null, "/"),
+        if (history.replaceState(null, null, "/stock.html"),
         "#reload" !== e && null != e && !(e.length < 4 || e.length > 20)) {
             var t = (e = e.substr(1)).indexOf("-");
             if (-1 != t) {
@@ -32598,7 +32598,7 @@ function() {
     };
     Games.redirRoot = function() {
         game.reloading = !0,
-        window.location = "/"
+        window.location = "/stock.html"
     }
     ;
     var O = function() {
