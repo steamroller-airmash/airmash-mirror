@@ -19559,7 +19559,8 @@ function loadGameCode() {
                     36e5 < Math.abs(bn - Vt) && (Vt = bn, qt = performance.now(), Kt = 0)
                 },
                 on = function(bn) {
-                    console.log(bn)
+                    if (DEVELOPMENT)
+                        console.log(bn)
                     if (game.state == Network.STATE.PLAYING || bn.c == yn.LOGIN || bn.c == yn.ERROR) {
                         if ((bn.c == yn.PLAYER_UPDATE || bn.c == yn.PLAYER_FIRE || bn.c == yn.EVENT_BOOST || bn.c == yn.EVENT_BOUNCE) && bn.id == game.myID || bn.c == yn.PING) {
                             if (bn.c != yn.PING && dn(bn)) return;
@@ -19730,7 +19731,7 @@ function loadGameCode() {
             }, Network.reconnect = function() {
                 UI.showMessage("alert", "", 100), Games.switchGame()
             }, Network.setup = function() {
-                (jt = (document.domain === "localhost" || document.domain === "127.0.0.1" || DEVELOPMENT ? "ws://" + document.domain + ":3501" : game.playUrl)), 
+                (jt = (document.domain === "localhost" || document.domain === "127.0.0.1" ? "ws://" + document.domain + ":3501" : game.playUrl)), 
                     Yt && Ht && Yt.close(), 
                     (Gt = new WebSocket(jt)).binaryType = "arraybuffer", 
                     Gt.onopen = function() {
