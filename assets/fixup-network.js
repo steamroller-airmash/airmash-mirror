@@ -21,7 +21,7 @@
                     super(domain);
                 }
                 else {
-                    let region = findById(en, region);
+                    let region = findById(en, match[1]);
                     let server = findById(region.games, match[2]);
 
                     console.log(server);
