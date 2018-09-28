@@ -3,6 +3,16 @@
     SWAM.on("gameLoaded", function() {
         let en = [];
 
+        function findById(id) {
+            if (id === "closest")
+                return en[0];
+
+            for (let i = 0; i < en.length; ++i) {
+                if (en[i].id === id) 
+                    return en[i];
+            }
+        }
+
         let Games_setup = Games.setup;
         Games.setup = function() {
             let $_ajax = $.ajax;
@@ -42,6 +52,8 @@
                     else {
                         let region = match[1];
                         let server = match[2];
+
+                        console.log(region, server);
                         super(domain);
                     }
                 }
