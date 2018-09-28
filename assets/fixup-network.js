@@ -3,7 +3,7 @@
     SWAM.on("gameLoaded", function() {
         let en = [];
 
-        function findById(id) {
+        function findById(en, id) {
             if (id === "closest")
                 return en[0];
 
@@ -17,15 +17,15 @@
             constructor(domain) {
                 let match = /^wss:\/\/game-([A-Za-z0-9_-]+).airma.sh\/([A-Za-z0-9_-]+)$/g.exec(domain);
 
-                console.log(en);
                 if (!match) {
                     super(domain);
                 }
                 else {
-                    let region = match[1];
-                    let server = match[2];
+                    let region = findById(en, region);
+                    let server = findById(region.games, match[2]);
 
-                    console.log(match, region, server);
+                    console.log(server);
+
                     super(domain);
                 }
             }
