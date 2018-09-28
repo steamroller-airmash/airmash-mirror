@@ -1,5 +1,5 @@
 !function() {
-    SWAM.on("gameLoaded", function() {
+    function mainFunction() {
         let en = [];
 
         function findById(en, id) {
@@ -60,5 +60,12 @@
 
             $.ajax = $_ajax;
         }
-    })
+    };
+
+    if (SWAM) {
+        SWAM.on("gameLoaded", mainFunction);
+    }
+    else {
+        mainFunction();
+    }
 }();
