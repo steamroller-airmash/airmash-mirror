@@ -1,4 +1,3 @@
-
 !function() {
     SWAM.on("gameLoaded", function() {
         let en = [];
