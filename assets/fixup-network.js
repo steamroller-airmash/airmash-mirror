@@ -24,11 +24,10 @@
                 }
                 else {
                     try {
-                        console.log(en, match, game);
                         let region = findById(en, game.playRegion);
                         let server = findById(region.games, game.playRoom);
 
-                        console.log(server);
+                        super(server.url);
                     }
                     catch(e) {
                         console.error(e);
