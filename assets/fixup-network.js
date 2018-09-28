@@ -25,8 +25,8 @@
                 else {
                     try {
                         console.log(en, match, game);
-                        let region = findById(en, match[1]);
-                        let server = findById(region.games, match[2]);
+                        let region = findById(en, game.playRegion);
+                        let server = findById(region.games, game.playRoom);
 
                         console.log(server);
                     }
