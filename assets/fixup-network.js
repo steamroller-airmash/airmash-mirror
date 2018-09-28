@@ -25,7 +25,7 @@
                     let region = match[1];
                     let server = match[2];
 
-                    console.log(region, server);
+                    console.log(match, region, server);
                     super(domain);
                 }
             }
