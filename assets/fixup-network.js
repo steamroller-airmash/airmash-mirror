@@ -11,6 +11,8 @@
                 if (en[i].id === id) 
                     return en[i];
             }
+
+            return null;
         }
 
         window.WebSocket = class NewWebSocket extends WebSocket {
@@ -21,12 +23,17 @@
                     super(domain);
                 }
                 else {
-                    let region = findById(en, match[1]);
-                    let server = findById(region.games, match[2]);
+                    try {
+                        console.log(en, match);
+                        let region = findById(en, match[1]);
+                        let server = findById(region.games, match[2]);
 
-                    console.log(server);
-
-                    super(domain);
+                        console.log(server);
+                    }
+                    catch(e) {
+                        console.error(e);
+                        super(domain);
+                    }
                 }
             }
         }
