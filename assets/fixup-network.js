@@ -16,6 +16,11 @@
 
         window.WebSocket = class NewWebSocket extends WebSocket {
             constructor(domain) {
+                if (window.location.hostname === "localhost") {
+                    super("ws://localhost:3501");
+                    return;
+                }
+
                 let match = /^wss:\/\/game-([A-Za-z0-9_-]+).airma.sh\/([A-Za-z0-9_-]+)$/g.exec(domain);
 
                 if (!match) {
@@ -47,7 +52,7 @@
                         en = JSON.parse(Pn.data);
                     }
                     catch (x) {
-                        return
+                        console.error("Ajax interceptor got invalid data. Error: ", x, "Data: ", Pn.data);
                     }
 
                     return obj_success(Pn);
@@ -59,6 +64,13 @@
             Games_setup();
 
             $.ajax = $_ajax;
+        }
+
+        let Players_network = Players.network;
+        Players.network = function(ty, packet) {
+            if (window.DEBUG_PACKET_DUMP)
+                console.log(packet);
+            return Players_network(ty, packet);
         }
     };
 
