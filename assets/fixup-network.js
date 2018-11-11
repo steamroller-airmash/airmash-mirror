@@ -45,18 +45,20 @@
         Games.setup = function() {
             let $_ajax = $.ajax;
             $.ajax = function(obj) {
-                let obj_success = obj.success;
+                if (obj.url.startsWith('/game')) {
+                    let obj_success = obj.success;
 
-                obj.success = function(Pn) {
-                    try {
-                        en = JSON.parse(Pn.data);
-                    }
-                    catch (x) {
-                        console.error("Ajax interceptor got invalid data. Error: ", x, "Data: ", Pn.data);
-                    }
+                    obj.success = function(Pn) {
+                        try {
+                            en = JSON.parse(Pn.data);
+                        }
+                        catch (x) {
+                            console.error("Ajax interceptor got invalid data. Error: ", x, "Data: ", Pn.data);
+                        }
 
-                    return obj_success(Pn);
-                };
+                        return obj_success(Pn);
+                    };
+                }
 
                 $_ajax(obj);
             }
