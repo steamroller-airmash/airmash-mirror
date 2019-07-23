@@ -18,7 +18,7 @@
 
         window.WebSocket = class NewWebSocket extends WebSocket {
             constructor(domain) {
-                let match = /^wss:\/\/game-([A-Za-z0-9_-]+).airma.sh\/([A-Za-z0-9_-]+)$/g.exec(domain);
+                let match = /^wss:\/\/game-([A-Za-z0-9_-.]+).airma.sh\/([A-Za-z0-9_-?.//=]+)$/g.exec(domain);
 
                 if (!match) {
                     super(domain);
